@@ -1,0 +1,63 @@
+In this notebook, we will be diving into the world of web scraping using the rvest library.
+
+Web scraping is a technique for extracting information from websites. The rvest library is a powerful tool for web scraping in R, providing a wide range of functions for working with HTML and XML documents.
+
+First, let's start by installing and loading the necessary library: rvest. 
+
+```{r}
+library("rvest")
+
+```
+
+Now, let's use the read_html function to read the HTML of a website. We will be using the example of scraping data from "Wikipedia", you can do this by running the following code:
+
+
+```{r}
+# Read the HTML of the website
+url <- "https://www.wikipedia.org/"
+html <- read_html(url)
+```
+
+The read_html function takes one argument: the URL of the website to scrape.
+
+Now, we can use the html_nodes function to select specific elements of the HTML document. Let's select all of the anchor tags on the page, we can do this using the following code:
+
+
+```{r}
+# Select all of the anchor tags
+anchors <- html_nodes(html, "a")
+```
+
+```{r}
+anchors
+
+```
+
+The html_nodes function takes two arguments: the HTML document and a CSS selector for the elements to select.
+
+We can use the html_text function to extract the text from the selected elements. Let's extract the text from the anchor tags, we can do this using the following code:
+
+
+```{r}
+# Extract the text from the anchor tags
+anchor_text <- html_text(anchors)
+```
+
+```{r}
+anchor_text
+
+```
+
+The html_text function takes one argument: the selected elements.
+
+Now, we can use the html_attrs function to extract the attributes of the selected elements. Let's extract the href attribute of the anchor tags, we can do this using the following code:
+
+
+```{r}
+# Extract the href attribute from the anchor tags
+anchor_hrefs <- html_attrs(anchors)$href
+```
+
+The html_attrs function takes one argument: the selected elements.
+
+That's it! You've just seen some examples of how to use the rvest library for web scraping in R. The rvest library is a powerful tool for working with HTML and XML documents, providing a wide range of functions for selecting, extracting, and manipulating elements of a document. I hope you found this notebook helpful and you can start using the rvest library in your own projects.
